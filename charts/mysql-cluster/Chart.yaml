@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "8.0.20"
 description: A Helm chart for MySQL Cluster
 name: mysql-cluster
-version: 0.0.3
+version: 0.0.4
 keywords:
 - kubernetes
 - mysql

@@ -2,7 +2,7 @@ apiVersion: v2
 name: phppgadmin
 description: A Helm chart for phppgadmin
 type: application
-version: 0.1.11
+version: 0.1.12
 appVersion: latest
 annotations:
   category: Database
