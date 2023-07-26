@@ -8,4 +8,4 @@ maintainers:
 name: elastalert2
 sources:
 - https://github.com/jertel/elastalert2
-version: 2.2.4
+version: 2.2.5
