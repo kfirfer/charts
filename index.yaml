@@ -19,6 +19,22 @@ entries:
   elasticsearch:
   - apiVersion: v1
     appVersion: 8.6.2
+    created: "2023-07-26T11:58:09.238480108Z"
+    description: Official Elastic helm chart for Elasticsearch
+    digest: 82aa05774fc4898de032f89a0504f61c16528553ed116b6bd24938c33a5efe15
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/elasticsearch.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: elasticsearch
+    sources:
+    - https://github.com/elastic/elasticsearch
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/elasticsearch-8.6.4/elasticsearch-8.6.4.tgz
+    version: 8.6.4
+  - apiVersion: v1
+    appVersion: 8.6.2
     created: "2023-07-26T11:46:01.417350053Z"
     description: Official Elastic helm chart for Elasticsearch
     digest: 7452eff5a92d7aa71805fdd3c1ed80b5741124cf3266e66320dd75e2dc29d50d
