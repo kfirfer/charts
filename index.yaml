@@ -179,6 +179,17 @@ entries:
     urls:
     - https://github.com/kfirfer/charts/releases/download/kibana-index-pattern-updater-0.0.2/kibana-index-pattern-updater-0.0.2.tgz
     version: 0.0.2
+  king:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-08-23T14:33:54.411508884Z"
+    description: A Helm chart for King
+    digest: a400ce7d8cab503594aa78514dd2fd0d8ff8da3e99c99baefa2d269694c4da1a
+    name: king
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/king-0.1.0/king-0.1.0.tgz
+    version: 0.1.0
   kube-hunter:
   - apiVersion: v2
     appVersion: 0.6.8
