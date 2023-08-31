@@ -29,7 +29,7 @@ ingress:
     - "www.example.com"
   tls:
     - hosts:
-        - "www.example.coml"
+        - "www.example.com"
 
 podSecurityPolicy:
   create: true
