@@ -127,6 +127,8 @@ lifecycle: {}
 
 extraManifests: []
 
+priorityClassName: ""
+
 tests:
   image:
     registry: docker.io
