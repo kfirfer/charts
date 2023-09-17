@@ -4,6 +4,10 @@ metadata:
   name: {{ include "teamspeak.fullname" . }}-query
   labels:
     {{- include "teamspeak.labels" . | nindent 4 }}
+  annotations:
+  {{- range $key, $value := .Values.service.query.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
 spec:
   type: {{ .Values.service.query.type }}
   {{ if .Values.service.query.externalTrafficPolicy }}
@@ -38,6 +42,10 @@ metadata:
   name: {{ include "teamspeak.fullname" . }}-file
   labels:
     {{- include "teamspeak.labels" . | nindent 4 }}
+  annotations:
+  {{- range $key, $value := .Values.service.file.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
 spec:
   type: {{ .Values.service.file.type }}
   {{ if .Values.service.file.externalTrafficPolicy }}
@@ -65,6 +73,10 @@ metadata:
   name: {{ include "teamspeak.fullname" . }}-voice
   labels:
     {{- include "teamspeak.labels" . | nindent 4 }}
+  annotations:
+  {{- range $key, $value := .Values.service.voice.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
 spec:
   type: {{ .Values.service.voice.type }}
   {{ if .Values.service.voice.externalTrafficPolicy }}

@@ -45,6 +45,7 @@ service:
     externalTrafficPolicy: ""
     port: 30033
     type: ClusterIP
+    annotations: {}
   query:
     externalIPs: []
     loadBalancerIP: null
@@ -52,6 +53,7 @@ service:
     rawPort: 10011
     sshPort: 10022
     type: ClusterIP
+    annotations: {}
   voice:
     externalIPs: []
     loadBalancerIP: null
@@ -59,6 +61,7 @@ service:
     ports:
     - 9987
     type: ClusterIP
+    annotations: {}
 serviceAccount:
   annotations: {}
   create: false
