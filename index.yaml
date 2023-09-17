@@ -565,6 +565,16 @@ entries:
   teamspeak:
   - apiVersion: v2
     appVersion: 3.13.7
+    created: "2023-09-17T12:04:04.11620772Z"
+    description: TeamSpeak is software for quality voice communication via the Internet.
+    digest: 6d865b44e79c072759c20c6faeb5eb0650773145a0437b8621f32206855debe7
+    name: teamspeak
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/teamspeak-1.2.3/teamspeak-1.2.3.tgz
+    version: 1.2.3
+  - apiVersion: v2
+    appVersion: 3.13.7
     created: "2023-07-26T11:46:04.652101119Z"
     description: TeamSpeak is software for quality voice communication via the Internet.
     digest: dad1eb3fc6f0ec262117e84d75b1de1db1158695d690c9e068a34020550afa01
