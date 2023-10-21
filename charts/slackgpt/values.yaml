@@ -283,12 +283,26 @@ securityContext:
 
 # Hard means that by default pods will only be scheduled if there are enough nodes for them
 # and that they will never end up on the same node. Setting this to soft will do this "best effort"
+# If you prefer not to configure podAntiAffinity automatically, please enter an empty string
 antiAffinity: "soft"
 
 # Only used if you choose soft
 weight: 1
 
 antiAffinityTopologyKey: "kubernetes.io/hostname"
+
+# Custom affinity
+# will merge with 'antiAffinity'. otherwise put empty string on 'antiAffinity' if only custom affinity is needed
+affinity: {}
+#  nodeAffinity:
+#    preferredDuringSchedulingIgnoredDuringExecution:
+#      - preference:
+#          matchExpressions:
+#            - key: provisioner
+#              operator: In
+#              values:
+#                - eks
+#        weight: 100
 
 ## @param topologySpreadConstraints Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/

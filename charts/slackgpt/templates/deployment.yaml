@@ -163,7 +163,15 @@ spec:
             secretName: {{ template "slackgpt.fullname" . }}
         {{- end }}
       {{- end }}
+      {{- if or (.Values.affinity) (.Values.antiAffinity) }}
       affinity:
+        {{- if .Values.affinity }}
+        {{- if eq (typeOf .Values.affinity) "string" }}
+        {{- tpl .Values.affinity . | nindent 8 }}
+        {{- else }}
+        {{- toYaml .Values.affinity | nindent 8 }}
+        {{- end }}
+        {{- end }}
         {{- if eq .Values.antiAffinity "hard" }}
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -182,6 +190,7 @@ spec:
                   matchLabels:
                     app.kubernetes.io/name: {{ template "slackgpt.name" . }}
                     namespace: {{ .Release.Namespace }}
+      {{- end }}
       {{- end }}
     {{- with .Values.tolerations }}
       tolerations:
