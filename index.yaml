@@ -470,6 +470,23 @@ entries:
       category: ApplicationServer
     apiVersion: v2
     appVersion: 0.0.24
+    created: "2023-10-21T12:39:53.318967808Z"
+    description: A Helm chart for Kubernetes
+    digest: aaed5335aaded323af7e2ddb95e23cd0ff77725615276008e58cce303eb3d3bf
+    home: https://github.com/kfirfer/helm/charts/scripts
+    icon: https://1.bp.blogspot.com/-SS2TiFZPpIQ/UUdSeFkTAPI/AAAAAAAAAlE/Q9oqGZCLm7U/s1600/Java7.png
+    maintainers:
+    - email: kfirfer@gmail.com
+      name: kfir.fersht
+    name: scripts
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/scripts-0.1.35/scripts-0.1.35.tgz
+    version: 0.1.35
+  - annotations:
+      category: ApplicationServer
+    apiVersion: v2
+    appVersion: 0.0.24
     created: "2023-07-26T11:46:04.124463282Z"
     description: A Helm chart for Kubernetes
     digest: 4033f3ffd9a2be59978f0beb768819692a0e7e051873fbcc340df75bc457dc57
