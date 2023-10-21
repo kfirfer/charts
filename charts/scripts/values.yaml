@@ -81,6 +81,8 @@ podLabels: {}
 
 nodeSelector: {}
 
+affinity: {}
+
 lifecycle: {}
 #  preStop:
 #    exec:
