@@ -8,7 +8,7 @@ image:
   registry: docker.io
   repository: kfirfer/slackgpt
   pullPolicy: IfNotPresent
-  tag: "0.0.1"
+  tag: "0.0.13"
 
 # -- Reference to one or more secrets to be used when [pulling images](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret) (from private registries).
 imagePullSecrets: []
