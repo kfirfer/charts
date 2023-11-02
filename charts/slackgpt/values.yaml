@@ -117,37 +117,37 @@ metrics:
       #     summary: App pod {{ "{{ $labels.pod }}" }} is down
 
 livenessProbe:
-  enabled: false
+  enabled: true
   initialDelaySeconds: 60
   periodSeconds: 7
   timeoutSeconds: 5
   successThreshold: 1
   failureThreshold: 6
   httpGet:
-    path: /actuator/health/liveness
-    port: 8081
+    path: /health/liveness
+    port: 8080
 
 readinessProbe:
-  enabled: false
+  enabled: true
   initialDelaySeconds: 20
   periodSeconds: 3
   timeoutSeconds: 2
   successThreshold: 1
   failureThreshold: 3
   httpGet:
-    path: /actuator/health/readiness
-    port: 8081
+    path: /health/readiness
+    port: 8080
 
 startupProbe:
-  enabled: false
+  enabled: true
   initialDelaySeconds: 20
   periodSeconds: 5
   timeoutSeconds: 3
   successThreshold: 1
   failureThreshold: 180
   httpGet:
-    path: /actuator/health/liveness
-    port: 8081
+    path: /health/liveness
+    port: 8080
 
 # resources -- Specify resources on the container.
 ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
