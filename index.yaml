@@ -555,6 +555,22 @@ entries:
       category: ApplicationServer
     apiVersion: v2
     appVersion: latest
+    created: "2023-11-02T11:13:46.15255142Z"
+    description: A Helm chart for Kubernetes
+    digest: 16e6b1d369132a213703e9ef21133c53b483eecfa8315b5f95c27b078d8ffb0e
+    icon: https://1.bp.blogspot.com/-SS2TiFZPpIQ/UUdSeFkTAPI/AAAAAAAAAlE/Q9oqGZCLm7U/s1600/Java7.png
+    maintainers:
+    - email: kfirfer@gmail.com
+      name: kfir.fersht
+    name: slackgpt
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/slackgpt-0.0.5/slackgpt-0.0.5.tgz
+    version: 0.0.5
+  - annotations:
+      category: ApplicationServer
+    apiVersion: v2
+    appVersion: latest
     created: "2023-11-02T11:12:03.94308219Z"
     description: A Helm chart for Kubernetes
     digest: ce2ce57980cf1a18e03098c5e3b054d2dea16c20db9a1ac5f793690103e8af1c
