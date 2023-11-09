@@ -1,4 +1,7 @@
 spec:
+  {{- if .Values.priorityClassName }}
+  priorityClassName: "{{ .Values.priorityClassName }}"
+  {{- end }}
   {{- if .Values.image.imagePullSecrets }}
   imagePullSecrets:
   {{- range .Values.image.imagePullSecrets }}
