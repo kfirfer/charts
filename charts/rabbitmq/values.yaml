@@ -28,6 +28,8 @@ annotations: {}
 ## Additional pod annotations
 podAnnotations: {}
 
+priorityClassName:  # system-cluster-critical
+
 ## Pod security options
 podSecurityContext:
   fsGroup: 999

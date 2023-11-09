@@ -32,6 +32,9 @@ spec:
       labels:
         {{- include "rabbitmq.selectorLabels" . | nindent 8 }}
     spec:
+      {{- if .Values.priorityClassName }}
+      priorityClassName: "{{ .Values.priorityClassName }}"
+      {{- end }}
       serviceAccountName: {{ include "rabbitmq.serviceAccountName" . }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
