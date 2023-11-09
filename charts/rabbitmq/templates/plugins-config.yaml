@@ -1,0 +1,22 @@
+{{ $plugins := compact (list "") }}
+{{- if .Values.k8sPeerDiscoveryPlugin.enabled }}
+{{ $plugins = append $plugins "rabbitmq_peer_discovery_k8s" }}
+{{- end }}
+{{- if .Values.managementPlugin.enabled }}
+{{ $plugins = append $plugins "rabbitmq_management" }}
+{{- end }}
+{{- if .Values.prometheusPlugin.enabled }}
+{{ $plugins = append $plugins "rabbitmq_prometheus"}}
+{{- end }}
+{{- if .Values.plugins }}
+{{ $plugins = concat $plugins .Values.plugins }}
+{{- end }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "rabbitmq.fullname" . }}-plugins
+  labels:
+    {{- include "rabbitmq.labels" . | nindent 4 }}
+data:
+  enabled_plugins: |
+    [{{- join "," $plugins }}].

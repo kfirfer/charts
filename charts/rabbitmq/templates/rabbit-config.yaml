@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "rabbitmq.fullname" . }}-config
+  labels:
+    {{- include "rabbitmq.labels" . | nindent 4 }}
+data:
+  rabbitmq.conf: |+
+    {{- include "rabbitmq.options" . | nindent 4 }}
+    {{- include "rabbitmq.managementPluginOptions" . | nindent 4 }}
+    {{- include "rabbitmq.k8sPeerDiscoveryPluginOptions" . | nindent 4 }}
+    {{- include "rabbitmq.prometheusPluginOptions" . | nindent 4 }}
+    {{- if .Values.customConfig }}
+    ## Custom configuration
+    {{ .Values.customConfig | nindent 4 }}
+    {{- end }}
+  {{- if .Values.customAdvancedConfig }}
+  advanced.config: |+
+    {{ .Values.customAdvancedConfig | nindent 4 }}
+  {{- end }}
