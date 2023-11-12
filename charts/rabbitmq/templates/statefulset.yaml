@@ -309,6 +309,10 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: rabbitmq-volume
+        {{- if .Values.storage.annotations }}
+        annotations:
+          {{ toYaml .Values.storage.annotations | indent 10 }}
+        {{- end }}
       spec:
         {{- with .Values.storage.accessModes }}
         accessModes:
