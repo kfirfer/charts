@@ -278,7 +278,7 @@ verticalPodAutoscaler:
   # Specifies whether recommended updates are applied when a Pod is started and whether recommended updates
   # are applied during the life of a Pod. Possible values are "Off", "Initial", "Recreate", and "Auto".
   updatePolicy: {}
-  # updateMode: Auto
+  # updateMode: "Auto"
 
 # A list of plugins (without whitespace!) - f.e.: rabbitmq_federation_management,rabbitmq_mqtt,rabbitmq_stomp
 plugins: []
