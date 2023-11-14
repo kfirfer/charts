@@ -246,6 +246,17 @@ clusterDomain: cluster.local
 ## Container termination grace period
 terminationGracePeriodSeconds: 60
 
+## @param topologySpreadConstraints Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template
+## ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
+topologySpreadConstraints: >
+#  - labelSelector:
+#      matchLabels:
+#        app.kubernetes.io/instance: {{ .Release.Name }}
+#        namespace: {{ .Release.Namespace }}
+#    maxSkew: 1
+#    topologyKey: topology.kubernetes.io/zone
+#    whenUnsatisfiable: ScheduleAnyway
+
 # A list of plugins (without whitespace!) - f.e.: rabbitmq_federation_management,rabbitmq_mqtt,rabbitmq_stomp
 plugins: []
 
