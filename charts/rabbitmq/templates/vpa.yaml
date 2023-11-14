@@ -22,7 +22,7 @@ spec:
       {{- end }}
   targetRef:
     apiVersion: apps/v1
-    kind: Deployment
+    kind: StatefulSet
     name: {{ template "rabbitmq.fullname" . }}
   {{- if .Values.verticalPodAutoscaler.updatePolicy }}
   updatePolicy:
