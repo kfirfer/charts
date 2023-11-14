@@ -257,6 +257,29 @@ topologySpreadConstraints: >
 #    topologyKey: topology.kubernetes.io/zone
 #    whenUnsatisfiable: ScheduleAnyway
 
+# Enable vertical pod autoscaler support
+# ref: https://github.com/kubernetes/autoscaler/blob/master/vertical-pod-autoscaler/FAQ.md
+verticalPodAutoscaler:
+  enabled: false
+  # Defaults to chart name
+  containerName: ""
+  # List of resources that the vertical pod autoscaler can control. Defaults to cpu and memory
+  controlledResources: []
+
+  # Define the max allowed resources for the pod
+  maxAllowed: {}
+  # cpu: 200m
+  # memory: 100Mi
+  # Define the min allowed resources for the pod
+  minAllowed: {}
+  # cpu: 200m
+  # memory: 100Mi
+
+  # Specifies whether recommended updates are applied when a Pod is started and whether recommended updates
+  # are applied during the life of a Pod. Possible values are "Off", "Initial", "Recreate", and "Auto".
+  updatePolicy: {}
+  # updateMode: Auto
+
 # A list of plugins (without whitespace!) - f.e.: rabbitmq_federation_management,rabbitmq_mqtt,rabbitmq_stomp
 plugins: []
 
