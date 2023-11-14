@@ -27,7 +27,7 @@ spec:
   {{- if .Values.verticalPodAutoscaler.updatePolicy }}
   updatePolicy:
     {{- if .Values.verticalPodAutoscaler.updatePolicy.updateMode }}
-    updateMode: {{ .Values.verticalPodAutoscaler.updatePolicy.updateMode  }}
+    updateMode: "{{ .Values.verticalPodAutoscaler.updatePolicy.updateMode  }}"
     {{- end }}
   {{- end }}
 {{- end }}
