@@ -171,6 +171,16 @@ entries:
   kibana-index-pattern-updater:
   - apiVersion: v2
     appVersion: 1.0.12
+    created: "2023-11-25T08:06:31.601132311Z"
+    description: A Helm chart for Kubernetes
+    digest: ced7f0a74a2c6ea926241b775323e14273c5defc5664b5c45c7c2979c434e3c8
+    name: kibana-index-pattern-updater
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/kibana-index-pattern-updater-0.0.3/kibana-index-pattern-updater-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 1.0.12
     created: "2023-07-26T11:46:02.304655888Z"
     description: A Helm chart for Kubernetes
     digest: 85e05152899b83f9a4d543888aca1dad6038a10706c41e107a43a23ff361cbe4
