@@ -11,14 +11,26 @@ spec:
     - port: {{ .Values.service.amqp.port }}
       targetPort: amqp
       name: amqp
+      {{- if semverCompare ">=1.20-0" .Capabilities.KubeVersion.GitVersion }}
+      appProtocol: tcp
+      {{- end }}
     - port: {{ .Values.service.mgmt.port }}
       targetPort: mgmt
       name: mgmt
+      {{- if semverCompare ">=1.20-0" .Capabilities.KubeVersion.GitVersion }}
+      appProtocol: http
+      {{- end }}
     - port: 4369
       targetPort: epmd
       name: epmd
+      {{- if semverCompare ">=1.20-0" .Capabilities.KubeVersion.GitVersion }}
+      appProtocol: tcp
+      {{- end }}
     - port: 25672
       targetPort: dist
       name: dist
+      {{- if semverCompare ">=1.20-0" .Capabilities.KubeVersion.GitVersion }}
+      appProtocol: tcp
+      {{- end }}
   selector:
     {{- include "rabbitmq.selectorLabels" . | nindent 4 }}

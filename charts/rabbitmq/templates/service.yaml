@@ -16,12 +16,18 @@ spec:
       {{- if and ( or (eq .Values.service.type "LoadBalancer") (eq .Values.service.type "NodePort") ) (.Values.service.amqp.nodePort) }}
       nodePort: {{ .Values.service.amqp.nodePort }}
       {{- end }}
+      {{- if semverCompare ">=1.20-0" .Capabilities.KubeVersion.GitVersion }}
+      appProtocol: tcp
+      {{- end }}
     {{- if .Values.options.ssl.enabled }}
     - port: {{ .Values.service.amqps.port }}
       targetPort: amqps
       name: amqps
       {{- if and ( or (eq .Values.service.type "LoadBalancer") (eq .Values.service.type "NodePort") ) (.Values.service.amqps.nodePort) }}
       nodePort: {{ .Values.service.amqps.nodePort }}
+      {{- end }}
+      {{- if semverCompare ">=1.20-0" .Capabilities.KubeVersion.GitVersion }}
+      appProtocol: tcp
       {{- end }}
     {{- end }}
     {{- if .Values.managementPlugin.enabled }}
@@ -31,6 +37,9 @@ spec:
       {{- if and ( or (eq .Values.service.type "LoadBalancer") (eq .Values.service.type "NodePort") ) (.Values.service.mgmt.nodePort) }}
       nodePort: {{ .Values.service.mgmt.nodePort }}
       {{- end }}
+      {{- if semverCompare ">=1.20-0" .Capabilities.KubeVersion.GitVersion }}
+      appProtocol: http
+      {{- end }}
     {{- end }}
     {{- if .Values.prometheusPlugin.enabled }}
     - port: {{ .Values.service.prometheus.port }}
@@ -38,6 +47,9 @@ spec:
       name: prometheus
       {{- if and ( or (eq .Values.service.type "LoadBalancer") (eq .Values.service.type "NodePort") ) (.Values.service.prometheus.nodePort) }}
       nodePort: {{ .Values.service.prometheus.nodePort }}
+      {{- end }}
+      {{- if semverCompare ">=1.20-0" .Capabilities.KubeVersion.GitVersion }}
+      appProtocol: http
       {{- end }}
     {{- end }}
   {{- if and (eq .Values.service.type "LoadBalancer") (.Values.service.loadBalancerIP) }}
