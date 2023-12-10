@@ -28,6 +28,10 @@ annotations: {}
 ## Additional pod annotations
 podAnnotations: {}
 
+# Additional pod labels for statefulset's template. Optional
+# ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+podLabels: {}
+
 priorityClassName:  # system-cluster-critical
 
 ## Pod security options
