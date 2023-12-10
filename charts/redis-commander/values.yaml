@@ -50,6 +50,10 @@ serviceAccount:
 
 podAnnotations: {}
 
+# Additional pod labels for deployment's template. Optional
+# ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+podLabels: {}
+
 podSecurityContext: {}
   # fsGroup: 2000
 
