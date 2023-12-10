@@ -510,17 +510,17 @@ entries:
     version: 0.2.8
   rabbitmq:
   - apiVersion: v2
-    appVersion: 3.12.9
-    created: "2023-12-10T19:16:50.506629081Z"
+    appVersion: 3.12.10
+    created: "2023-12-10T19:17:02.571168181Z"
     description: A Helm chart for a RabbitMQ cluster on Kubernetes
-    digest: dde165b733453a0b80e6fafe6647a4af32d4a3beff5aa3bd3ca9273455700187
+    digest: c059ec96d3e254485d9f7273cda810779aa5769b6fed102e2015e5612655ca7a
     maintainers:
     - name: groundhog2k
     name: rabbitmq
     type: application
     urls:
-    - https://github.com/kfirfer/charts/releases/download/rabbitmq-0.7.20/rabbitmq-0.7.20.tgz
-    version: 0.7.20
+    - https://github.com/kfirfer/charts/releases/download/rabbitmq-0.7.21/rabbitmq-0.7.21.tgz
+    version: 0.7.21
   - apiVersion: v2
     appVersion: 3.12.9
     created: "2023-12-10T11:02:27.844572332Z"
