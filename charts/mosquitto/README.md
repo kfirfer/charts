@@ -5,8 +5,8 @@ This chart installs [Mosquitto](https://mosquitto.org/), an open source (EPL/EDL
 ## TL;DR;
 
 ```bash
-$ helm repo add naps https://naps.github.io/helm-charts/
-$ helm install my-release naps/mosquitto
+$ helm repo add kfirfer https://kfirfer.github.io/charts/
+$ helm install my-release kfirfer/mosquitto
 ```
 
 ## Installing the Chart
@@ -14,7 +14,7 @@ $ helm install my-release naps/mosquitto
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install my-release naps/mosquitto
+$ helm install my-release kfirfer/mosquitto
 ```
 
 The command deploys Mosquitto on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
