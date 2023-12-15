@@ -1,0 +1,18 @@
+{{ if .Values.mosquitto.ssl.certificate.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  labels:
+    {{- include "mosquitto.labels" . | nindent 4 }}
+  name: {{ template "mosquitto.fullname" . }}
+spec:
+  duration: 87600h0m0s # 10y
+  commonName: "pica.co.il"
+  dnsNames:
+  {{- toYaml .Values.mosquitto.ssl.certificate.dnsNames | nindent 2 }}
+  issuerRef:
+    group: {{ .Values.mosquitto.ssl.certificate.issuerRef.group }}
+    kind: {{ .Values.mosquitto.ssl.certificate.issuerRef.kind }}
+    name: {{ .Values.mosquitto.ssl.certificate.issuerRef.name }}
+  secretName: {{ .Values.mosquitto.ssl.secretName }}
+{{- end }}
