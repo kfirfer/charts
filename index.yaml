@@ -223,6 +223,19 @@ entries:
     urls:
     - https://github.com/kfirfer/charts/releases/download/kube-hunter-1.0.5/kube-hunter-1.0.5.tgz
     version: 1.0.5
+  mosquitto:
+  - apiVersion: v2
+    appVersion: 1.6.15
+    created: "2023-12-15T12:07:15.149404566Z"
+    description: A Helm chart packaging Mosquitto
+    digest: d3dd39ea933db6f8b7e70e0198e52903db8b7066b5da9c60968e1a78f7f53d03
+    home: https://github.com/NaPs/helm-charts/tree/master/charts/mosquitto
+    icon: https://mosquitto.org/images/mosquitto-text-side-28.png
+    name: mosquitto
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/mosquitto-1.0.4/mosquitto-1.0.4.tgz
+    version: 1.0.4
   mysql-check:
   - annotations:
       category: Database
