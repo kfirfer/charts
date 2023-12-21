@@ -90,6 +90,8 @@ env:
   # posssible values: "trace", "debug", "info", "warn", "error"
   RUST_LOG: "garage=info"
 
+annotations: {}
+
 # Data persistence
 persistence:
   enabled: true

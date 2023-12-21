@@ -4,6 +4,10 @@ metadata:
   name: {{ include "garage.fullname" . }}
   labels:
     {{- include "garage.labels" . | nindent 4 }}
+{{- if .Values.annotations }}
+  annotations:
+{{ toYaml .Values.annotations | indent 4 }}
+{{- end }}
 spec:
   selector:
     matchLabels:
