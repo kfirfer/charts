@@ -545,6 +545,32 @@ entries:
     urls:
     - https://github.com/kfirfer/charts/releases/download/pmm-server-0.2.8/pmm-server-0.2.8.tgz
     version: 0.2.8
+  quickwit:
+  - apiVersion: v2
+    appVersion: v0.6.4
+    created: "2023-12-21T11:06:21.510832587Z"
+    description: Sub-second search & analytics engine on cloud storage.
+    digest: 872e4d5008d7dfd9d475a13450b2b554ffa9748522716711c0ba8e60f5dab8ca
+    home: https://quickwit.io/
+    icon: https://avatars.githubusercontent.com/u/98504233?s=200&v=4
+    keywords:
+    - quickwit
+    - search
+    - analytics
+    - tracing
+    - logs
+    maintainers:
+    - email: hello@quickwit.io
+      name: Quickwit
+    - email: mkhpalm@gmail.com
+      name: mkhpalm
+    name: quickwit
+    sources:
+    - https://github.com/quickwit-oss/quickwit/
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/quickwit-0.5.2/quickwit-0.5.2.tgz
+    version: 0.5.2
   rabbitmq:
   - apiVersion: v2
     appVersion: 3.12.10
