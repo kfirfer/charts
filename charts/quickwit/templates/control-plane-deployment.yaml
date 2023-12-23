@@ -28,6 +28,9 @@ spec:
       serviceAccountName: {{ include "quickwit.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.control_plane.terminationGracePeriodSeconds }}
+      terminationGracePeriodSeconds: {{ .Values.control_plane.terminationGracePeriodSeconds }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:

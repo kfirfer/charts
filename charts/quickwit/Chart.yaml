@@ -18,4 +18,4 @@ name: quickwit
 sources:
 - https://github.com/quickwit-oss/quickwit/
 type: application
-version: 0.5.2
+version: 0.5.3
