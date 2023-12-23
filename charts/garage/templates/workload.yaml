@@ -26,7 +26,6 @@ spec:
       {{- end }}
       labels:
         {{- include "garage.selectorLabels" . | nindent 8 }}
-        version: "{{ .Values.image.tag | default .Chart.AppVersion }}"
         {{- if .Values.podLabels }}
           {{- toYaml .Values.podLabels | nindent 8 }}
         {{- end }}
