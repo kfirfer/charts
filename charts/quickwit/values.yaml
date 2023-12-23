@@ -68,6 +68,8 @@ searcher:
   updateStrategy: {}
     # type: RollingUpdate
 
+  terminationGracePeriodSeconds: 10
+
   startupProbe:
     httpGet:
       path: /health/livez
@@ -113,6 +115,8 @@ indexer:
 
   updateStrategy: {}
     # type: RollingUpdate
+
+  terminationGracePeriodSeconds: 10
 
   startupProbe:
     httpGet:
@@ -167,6 +171,8 @@ metastore:
   updateStrategy: {}
     # type: RollingUpdate
 
+  terminationGracePeriodSeconds: 10
+
   startupProbe:
     httpGet:
       path: /health/livez
@@ -212,6 +218,8 @@ control_plane:
 
   updateStrategy: {}
     # type: RollingUpdate
+
+  terminationGracePeriodSeconds: 10
 
   startupProbe:
     httpGet:
@@ -259,6 +267,8 @@ janitor:
 
   updateStrategy: {}
     # type: RollingUpdate
+
+  terminationGracePeriodSeconds: 10
 
   startupProbe:
     httpGet:
