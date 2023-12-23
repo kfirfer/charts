@@ -121,6 +121,17 @@ entries:
   garage:
   - apiVersion: v2
     appVersion: v0.9.0
+    created: "2023-12-23T02:52:25.057588617Z"
+    description: S3-compatible object store for small self-hosted geo-distributed
+      deployments
+    digest: b1d4c175349129a92c2e822eea12e1de31e84a4b84745d33552f62504d99b022
+    name: garage
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/garage-0.4.4/garage-0.4.4.tgz
+    version: 0.4.4
+  - apiVersion: v2
+    appVersion: v0.9.0
     created: "2023-12-21T22:07:09.823214914Z"
     description: S3-compatible object store for small self-hosted geo-distributed
       deployments
