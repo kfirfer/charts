@@ -70,6 +70,11 @@ searcher:
 
   terminationGracePeriodSeconds: 10
 
+  lifecycle: {}
+  #  preStop:
+  #    exec:
+  #      command: ["/bin/sh", "-c", "sleep 5"]
+
   startupProbe:
     httpGet:
       path: /health/livez
@@ -117,6 +122,11 @@ indexer:
     # type: RollingUpdate
 
   terminationGracePeriodSeconds: 10
+
+  lifecycle: {}
+  #  preStop:
+  #    exec:
+  #      command: ["/bin/sh", "-c", "sleep 5"]
 
   startupProbe:
     httpGet:
@@ -173,6 +183,11 @@ metastore:
 
   terminationGracePeriodSeconds: 10
 
+  lifecycle: {}
+  #  preStop:
+  #    exec:
+  #      command: ["/bin/sh", "-c", "sleep 5"]
+
   startupProbe:
     httpGet:
       path: /health/livez
@@ -220,6 +235,11 @@ control_plane:
     # type: RollingUpdate
 
   terminationGracePeriodSeconds: 10
+
+  lifecycle: {}
+  #  preStop:
+  #    exec:
+  #      command: ["/bin/sh", "-c", "sleep 5"]
 
   startupProbe:
     httpGet:
@@ -269,6 +289,11 @@ janitor:
     # type: RollingUpdate
 
   terminationGracePeriodSeconds: 10
+
+  lifecycle: {}
+  #  preStop:
+  #    exec:
+  #      command: ["/bin/sh", "-c", "sleep 5"]
 
   startupProbe:
     httpGet:

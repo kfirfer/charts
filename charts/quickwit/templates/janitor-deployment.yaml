@@ -53,6 +53,10 @@ spec:
             {{- toYaml .Values.janitor.livenessProbe | nindent 12 }}
           readinessProbe:
             {{- toYaml .Values.janitor.readinessProbe | nindent 12 }}
+          {{- with .Values.janitor.lifecycle }}
+          lifecycle:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: config
               mountPath: /quickwit/node.yaml

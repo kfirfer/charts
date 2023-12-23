@@ -56,6 +56,10 @@ spec:
             {{- toYaml .Values.indexer.livenessProbe | nindent 12 }}
           readinessProbe:
             {{- toYaml .Values.indexer.readinessProbe | nindent 12 }}
+          {{- with .Values.indexer.lifecycle }}
+          lifecycle:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: config
               mountPath: /quickwit/node.yaml

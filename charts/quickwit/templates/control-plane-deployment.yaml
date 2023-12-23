@@ -52,6 +52,10 @@ spec:
             {{- toYaml .Values.control_plane.livenessProbe | nindent 12 }}
           readinessProbe:
             {{- toYaml .Values.control_plane.readinessProbe | nindent 12 }}
+          {{- with .Values.control_plane.lifecycle }}
+          lifecycle:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: config
               mountPath: /quickwit/node.yaml

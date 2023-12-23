@@ -51,6 +51,10 @@ spec:
             {{- toYaml .Values.metastore.livenessProbe | nindent 12 }}
           readinessProbe:
             {{- toYaml .Values.metastore.readinessProbe | nindent 12 }}
+          {{- with .Values.metastore.lifecycle }}
+          lifecycle:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: config
               mountPath: /quickwit/node.yaml
