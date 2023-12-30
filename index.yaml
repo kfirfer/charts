@@ -297,6 +297,23 @@ entries:
   - annotations:
       category: Database
     apiVersion: v2
+    appVersion: 0.0.4
+    created: "2023-12-30T12:54:25.596894751Z"
+    description: A Helm chart for Kubernetes
+    digest: a7c943f6e1e237e3ab0ef29871aeebda685a68980079db860d6b02eaa8741e69
+    home: https://github.com/kfirfer/helm/tree/master/charts/mysql-check
+    icon: https://www.mysql.com/common/logos/logo-mysql-170x115.png
+    maintainers:
+    - email: kfirfer@gmail.com
+      name: kfir
+    name: mysql-check
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/mysql-check-0.3.0/mysql-check-0.3.0.tgz
+    version: 0.3.0
+  - annotations:
+      category: Database
+    apiVersion: v2
     appVersion: 0.0.2
     created: "2023-07-26T11:46:02.554224035Z"
     description: A Helm chart for Kubernetes
@@ -333,6 +350,35 @@ entries:
     - https://github.com/kfirfer/charts/releases/download/mysql-cluster-0.0.4/mysql-cluster-0.0.4.tgz
     version: 0.0.4
   mysqldump:
+  - annotations:
+      category: Database
+    apiVersion: v1
+    appVersion: 1.0.3
+    created: "2023-12-30T12:54:25.71002574Z"
+    description: A Helm chart to help backup MySQL databases using mysqldump
+    digest: 3b7239d2e56e8be40fbecbec5ea8a4992ecdd53ee92554dff9c148d23f96ed4d
+    home: https://www.mysql.com/
+    icon: https://www.mysql.com/common/logos/logo-mysql-170x115.png
+    keywords:
+    - mysql
+    - mysqldump
+    - backup
+    maintainers:
+    - email: username.taken@gmail.com
+      name: paulczar
+    - email: monotek23@gmail.com
+      name: monotek
+    - email: axel.koehler@kiwigrid.com
+      name: axdotl
+    - email: kfirfer@gmail.com
+      name: kfirfer
+    name: mysqldump
+    sources:
+    - https://github.com/kubernetes/charts
+    - https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/mysqldump-2.8.0/mysqldump-2.8.0.tgz
+    version: 2.8.0
   - annotations:
       category: Database
     apiVersion: v1
