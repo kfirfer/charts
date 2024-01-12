@@ -105,7 +105,7 @@ persistence:
 config: {}
 #  configuration.yaml:
 #    homeassistant:
-#      external_url: "https://home-assistant.pica.co.il"
+#      external_url: "https://home-assistant.example.com"
 #    http:
 #      server_port: 8123
 #      use_x_forwarded_for: true
