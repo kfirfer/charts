@@ -58,6 +58,12 @@ tolerations: []
 
 affinity: {}
 
+livenessProbe:
+  enabled: true
+
+readinessProbe:
+  enabled: true
+
 mosquitto:
   config: ""
   users: ""

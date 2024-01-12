@@ -40,13 +40,16 @@ spec:
               containerPort: {{ $value }}
               protocol: TCP
             {{- end }}
+          {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             tcpSocket:
               port: {{ .Values.service.ports.mqtt }}
+          {{- end }}
+          {{- if .Values.readinessProbe.enabled }}
           readinessProbe:
-            httpGet:
             tcpSocket:
               port: {{ .Values.service.ports.mqtt }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
