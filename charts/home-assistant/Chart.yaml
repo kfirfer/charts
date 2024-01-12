@@ -1,0 +1,23 @@
+annotations:
+  artifacthub.io/changes: |
+    - kind: changed
+      description: bump home assistant version to 2023.8.4
+  artifacthub.io/links: |
+    - name: Home assistant source repo
+      url: https://github.com/home-assistant
+    - name: Helm Repo
+      url: https://gitlab.com/alexander-chernov/helm/home-assistant
+apiVersion: v2
+appVersion: 2023.10.3
+description: |
+  HomeAssistant is an open source home automation that puts local control and privacy first.
+  Powered by a worldwide community of tinkerers and DIY enthusiasts.
+  Perfect to run on a Raspberry Pi or a local server.
+icon: https://design.home-assistant.io/images/logo-variants.png
+keywords:
+- homeassistant
+- home-assistant
+- smart home
+name: home-assistant
+type: application
+version: 0.5.3
