@@ -210,11 +210,11 @@ entries:
           url: https://gitlab.com/alexander-chernov/helm/home-assistant
     apiVersion: v2
     appVersion: 2023.10.3
-    created: "2024-01-12T13:24:53.91399991Z"
+    created: "2024-01-12T13:25:28.697365997Z"
     description: 'HomeAssistant is an open source home automation that puts local
       control and privacy first. Powered by a worldwide community of tinkerers and
       DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server. '
-    digest: f82e0fa43cd6746cb57940ddb2e99a03fa859663493ca6eda06710399b722907
+    digest: 22f1eb0ca27a4cebc03123273cf1bdee1aae885064ccabe175196e7dec5732f8
     icon: https://design.home-assistant.io/images/logo-variants.png
     keywords:
     - homeassistant
@@ -223,8 +223,8 @@ entries:
     name: home-assistant
     type: application
     urls:
-    - https://github.com/kfirfer/charts/releases/download/home-assistant-0.5.3/home-assistant-0.5.3.tgz
-    version: 0.5.3
+    - https://github.com/kfirfer/charts/releases/download/home-assistant-0.5.4/home-assistant-0.5.4.tgz
+    version: 0.5.4
   jellyfin:
   - apiVersion: v2
     appVersion: 10.7.5
