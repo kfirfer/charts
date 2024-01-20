@@ -4,10 +4,7 @@ kind: ClusterRole
 metadata:
   name: {{ .Release.Namespace }}-{{ include "pod-cleanup.fullname" . }}
 rules:
-- resources:
-  - '*'
-  apiGroups:
-  - '*'
-  verbs:
-  - '*'
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "delete"]
 {{- end }}
