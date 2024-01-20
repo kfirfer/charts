@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  registry: docker.io
-  repository: registry.gitlab.com/gitlab-org/ci-cd/gitlab-runner-pod-cleanup
+  registry: registry.gitlab.com
+  repository: gitlab-org/ci-cd/gitlab-runner-pod-cleanup
   pullPolicy: IfNotPresent
   tag: "latest"
 
