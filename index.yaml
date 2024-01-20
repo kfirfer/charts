@@ -240,6 +240,28 @@ entries:
     urls:
     - https://github.com/kfirfer/charts/releases/download/jellyfin-2.0.3/jellyfin-2.0.3.tgz
     version: 2.0.3
+  karpenter:
+  - apiVersion: v2
+    appVersion: 0.31.2
+    created: "2024-01-20T14:22:06.359607661Z"
+    description: A Helm chart for Karpenter, an open-source node provisioning project
+      built for Kubernetes.
+    digest: 5ea0fcb46ef41d9e7173198e83e4325537071d5d1f55960ff22fe2ddfebef673
+    home: https://karpenter.sh/
+    icon: https://repository-images.githubusercontent.com/278480393/dab059c8-caa1-4b55-aaa7-3d30e47a5616
+    keywords:
+    - cluster
+    - node
+    - scheduler
+    - autoscaling
+    - lifecycle
+    name: karpenter
+    sources:
+    - https://github.com/aws/karpenter/
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/karpenter-0.31.2/karpenter-0.31.2.tgz
+    version: 0.31.2
   keel:
   - apiVersion: v1
     appVersion: 0.19.1
