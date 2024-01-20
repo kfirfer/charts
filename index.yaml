@@ -714,6 +714,23 @@ entries:
       category: ApplicationServer
     apiVersion: v2
     appVersion: latest
+    created: "2024-01-20T16:42:33.595707299Z"
+    description: A Helm chart for Kubernetes
+    digest: 544c4611c05efac7cd38bbdd1fb3de1e55c498e51ec6e02a649f2e3e07327d16
+    home: https://artifacthub.io/packages/helm/kfirfer/pod-cleanup
+    icon: https://1.bp.blogspot.com/-SS2TiFZPpIQ/UUdSeFkTAPI/AAAAAAAAAlE/Q9oqGZCLm7U/s1600/Java7.png
+    maintainers:
+    - email: kfirfer@gmail.com
+      name: kfirfer
+    name: pod-cleanup
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/pod-cleanup-0.0.3/pod-cleanup-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      category: ApplicationServer
+    apiVersion: v2
+    appVersion: latest
     created: "2024-01-20T16:41:18.704897422Z"
     description: A Helm chart for Kubernetes
     digest: 608d619e73c9dd003be76eb8f20ec1b5a2ce302afcd02563290c1aecc9baf3bc
