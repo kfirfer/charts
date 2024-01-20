@@ -155,11 +155,11 @@ rbac:
 ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
 resources:
   requests:
-    memory: "50Mi"
+    memory: "25Mi"
     cpu: "10m"
   limits:
-    memory: "2000Mi"
-    cpu: "2000m"
+    memory: "500Mi"
+    cpu: "1000m"
 
 ## Configure PodDisruptionBudget
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/disruptions/
