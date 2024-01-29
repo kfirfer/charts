@@ -358,6 +358,17 @@ entries:
     urls:
     - https://github.com/kfirfer/charts/releases/download/kube-hunter-1.0.5/kube-hunter-1.0.5.tgz
     version: 1.0.5
+  kubernetes-replicator:
+  - apiVersion: v2
+    appVersion: v2.9.1
+    created: "2024-01-29T10:37:21.522274568Z"
+    description: Controller for replicating secrets+configmaps across namespaces
+    digest: d175bfdd1fd276d260dba2894f5e7d73e971d33de3073aed515ac830a6b4e908
+    name: kubernetes-replicator
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/kubernetes-replicator-2.9.1/kubernetes-replicator-2.9.1.tgz
+    version: 2.9.1
   mosquitto:
   - apiVersion: v2
     appVersion: 1.6.15
