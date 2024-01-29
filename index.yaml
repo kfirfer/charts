@@ -72,6 +72,23 @@ entries:
     urls:
     - https://github.com/kfirfer/charts/releases/download/elasticsearch-curator-2.2.3/elasticsearch-curator-2.2.3.tgz
     version: 2.2.3
+  extra-manifests:
+  - annotations:
+      category: ApplicationServer
+    apiVersion: v2
+    appVersion: latest
+    created: "2024-01-29T06:13:36.526382822Z"
+    description: A Helm chart for Kubernetes
+    digest: d27752583a20d6b49bc629f6ef328da97f96522a613cf913616a07e4f31b65b8
+    home: https://github.com/kfirfer/charts
+    maintainers:
+    - email: kfirfer@gmail.com
+      name: kfirfer
+    name: extra-manifests
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/extra-manifests-1.0.5/extra-manifests-1.0.5.tgz
+    version: 1.0.5
   fluentd-elasticsearch:
   - apiVersion: v2
     appVersion: v4.2.3
