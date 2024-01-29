@@ -1,0 +1,12 @@
+apiVersion: v2
+name: extra-manifests
+description: A Helm chart for Kubernetes
+type: application
+version: 1.0.5
+appVersion: latest
+home: https://github.com/kfirfer/charts
+maintainers:
+  - name: kfirfer
+    email: kfirfer@gmail.com
+annotations:
+  category: ApplicationServer
