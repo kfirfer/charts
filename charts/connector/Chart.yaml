@@ -1,0 +1,7 @@
+apiVersion: v1
+appVersion: latest
+description: Twingate Connector helm chart
+home: https://www.twingate.com
+icon: https://www.twingate.com/twingate.png
+name: connector
+version: 0.1.23

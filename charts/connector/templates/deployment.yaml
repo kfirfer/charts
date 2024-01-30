@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cn.fullname" . }}
+  labels:
+{{ include "cn.labels" . | indent 4 }}
+{{- if .Values.additionalLabels -}}
+  {{- toYaml .Values.additionalLabels | nindent 4 }}
+{{- end }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "cn.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "cn.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        {{- if .Values.additionalLabels -}}
+        {{- toYaml .Values.additionalLabels | nindent 8 }}
+        {{- end }}
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    spec:
+      {{- if .Values.priorityClassName }}
+      priorityClassName: "{{ .Values.priorityClassName }}"
+      {{- end }}
+    {{- if .Values.icmpSupport.enabled }}
+      securityContext:
+        sysctls:
+        - name: net.ipv4.ping_group_range
+          value: "0  2147483647"
+    {{- end }}
+    {{- if .Values.hostNetwork }}
+      hostNetwork: true
+    {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                {{- if .Values.connector.existingSecret }}
+                name: {{ .Values.connector.existingSecret }}
+                {{- else }}
+                name: {{ include "cn.fullname" . }}
+                {{- end }}
+                optional: false
+          env:
+            - name: TWINGATE_LABEL_DEPLOYED_BY
+              value: helm
+            - name: TWINGATE_LABEL_HELM_CHART
+              value: {{ include "cn.chart" . }}
+            - name: TWINGATE_URL
+              value: "https://{{ required "Network name required" .Values.connector.network }}.{{ .Values.connector.url | default "twingate.com" }}"
+              {{- if .Values.connector.dnsServer }}
+            - name: TWINGATE_DNS
+              value: "{{ .Values.connector.dnsServer }}"
+              {{- end }}
+            - name: TWINGATE_LOG_LEVEL
+              {{- if eq .Values.connector.logLevel "warning" }}
+              value: "4"
+              {{- else if eq .Values.connector.logLevel "info" }}
+              value: "6"
+              {{- else if eq .Values.connector.logLevel "debug" }}
+              value: "7"
+              {{- else }}
+              value: "3"
+              {{- end }}
+            {{- if .Values.connector.logAnalytics}}
+            - name: TWINGATE_LOG_ANALYTICS
+              value: {{ .Values.connector.logAnalytics }}
+            {{- end }}
+            {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+          securityContext:
+            allowPrivilegeEscalation: false
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.podDnsPolicy }}
+      dnsPolicy: {{ . }}
+    {{- end }}
+    {{- with .Values.podDnsConfig }}
+      dnsConfig:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
