@@ -1,5 +1,17 @@
 apiVersion: v1
 entries:
+  connector:
+  - apiVersion: v1
+    appVersion: latest
+    created: "2024-01-30T05:34:47.576034516Z"
+    description: Twingate Connector helm chart
+    digest: 42c2313558763c898bbe18dbfa339b812f364ef2fe22645a2d37200034f9f0ce
+    home: https://www.twingate.com
+    icon: https://www.twingate.com/twingate.png
+    name: connector
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/connector-0.1.23/connector-0.1.23.tgz
+    version: 0.1.23
   elastalert2:
   - apiVersion: v1
     appVersion: 2.2.3
