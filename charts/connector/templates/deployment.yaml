@@ -7,6 +7,10 @@ metadata:
 {{- if .Values.additionalLabels -}}
   {{- toYaml .Values.additionalLabels | nindent 4 }}
 {{- end }}
+{{- if .Values.additionalAnnotations -}}
+  annotations:
+  {{- toYaml .Values.additionalAnnotations | nindent 4 }}
+{{- end }}
 spec:
   replicas: 1
   selector:

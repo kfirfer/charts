@@ -28,6 +28,10 @@ resources:
 ##
 additionalLabels: {}
 
+## Additional annotations to add to the Deployment's metadata
+##
+additionalAnnotations: {}
+
 ## podAnnotations Extra annotations for Connector pod
 ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 ##
