@@ -25,6 +25,8 @@ polling:
 #     imagePullPolicy: IfNotPresent
 #     command: ['sh', '-c', 'echo Container 1 is Running ; sleep 3600']
 
+deploymentAnnotations: {}
+
 # Helm provider support
 helmProvider:
   enabled: true
