@@ -1,0 +1,107 @@
+
+nameOverride: ""
+fullnameOverride: ""
+
+imagePullSecrets: {}
+
+ui:
+  replicaCount: 1
+  image:
+    repository: frankescobar/allure-docker-service-ui
+    tag: "7.0.3"
+    digest: ""
+    pullPolicy: IfNotPresent
+  podAnnotations: {}
+  podSecurityContext: {}
+  securityContext: {}
+  resources: {}
+  service:
+    type: ClusterIP
+    port: 80
+  nodeSelector: {}
+
+api:
+  replicaCount: 1
+  # Run developer mode to log HTTP requests
+  devMode: false
+  image:
+    repository: frankescobar/allure-docker-service
+    tag: "2.21.0"
+    digest: ""
+    pullPolicy: IfNotPresent
+  podAnnotations: {}
+  # WARNING: Do not change fsGroup.
+  # Group must be 1000 to use the shared Volume.
+  podSecurityContext:
+    fsGroup: 1000
+  # WARNING: Do not change runAsUser & runAsGroup.
+  # User & Group must be 1000 to use the shared Volume.
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+  resources: {}
+  service:
+    type: ClusterIP
+    port: 80
+  nodeSelector: {}
+
+# Keep Old Allure Results
+keepHistory: true
+
+# Number of Allure Reports to Keep
+# Set to NONE to use Generate Reports Endpoint
+updateFrequency: NONE
+
+# Enables Admin & Viewer Login
+securityEnabled: false
+
+# Make Viewer Endpoints Public
+publicViewerEndpoint: true
+
+# Set Admin & Viewer Credentials on Security Enable
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#     name: api-credentials
+# type: Opaque
+# data:
+#   # echo -n 'my_username' | base64
+#   SECURITY_USER: bXlfdXNlcm5hbWU=
+#   # echo -n 'my_password' | base64
+#   SECURITY_PASS: bXlfcGFzc3dvcmQ=
+#   # echo -n 'view_user' | base64
+#   SECURITY_VIEWER_USER: dmlld191c2Vy
+#   # echo -n 'view_pass' | base64
+#   SECURITY_VIEWER_PASS: dmlld19wYXNz
+credentials: api-credentials
+
+# Allure History and Reports Storage Resources
+volume:
+  enabled: false
+  storageClassName: ""
+  size: 5Gi
+  existingClaim: ""
+  accessModes:
+    - ReadWriteOnce
+  annotations:
+    resize.topolvm.io/storage_limit: 1000Gi
+    resize.topolvm.io/threshold: 15%
+    resize.topolvm.io/inodes-threshold: 20%
+    resize.topolvm.io/increase: 5Gi
+
+# For Large Allure Results:
+# - Increase Connection Timeout
+# - Increase Body Size
+# - Diasble Modsecurity
+ingress:
+  enabled: false
+  tls: false
+  existingSecret: ""
+  ingressClassName: nginx
+  # Allure UI needs a Public Allure API Hostname
+  hostname: ""
+  annotations: 
+    nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+    # cert-manager.io/cluster-issuer: letsencrypt
+    # nginx.ingress.kubernetes.io/enable-modsecurity: 'false'
+    # nginx.ingress.kubernetes.io/proxy-connect-timeout: '900'

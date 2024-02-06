@@ -1,0 +1,41 @@
+{{- if .Values.ingress.enabled }}
+{{- $fullName := include "allure.fullname" . }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "allure.labels" . | nindent 4 }}
+  annotations:
+  {{- with .Values.ingress.annotations }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+{{- with .Values.ingress }}
+  ingressClassName: {{ default "nginx" .ingressClassName }}
+  {{- if .tls }}
+  tls:
+    - hosts:
+        - {{ .hostname | quote }}
+      secretName: {{ default (printf "%s-tls" $fullName) .existingSecret }}
+  {{- end }}
+  rules:
+    - host: {{ .hostname | quote }}
+      http:
+        paths:
+          - path: /allure-docker-service
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}-api
+                port:
+                  name: api
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}-ui
+                port:
+                  name: ui
+{{- end }}
+{{- end }}
