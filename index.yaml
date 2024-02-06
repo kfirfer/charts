@@ -326,6 +326,27 @@ entries:
     version: 2.0.3
   karpenter:
   - apiVersion: v2
+    appVersion: 0.33.2
+    created: "2024-02-06T06:25:45.677285386Z"
+    description: A Helm chart for Karpenter, an open-source node provisioning project
+      built for Kubernetes.
+    digest: 8b65f5316c0909cd862cac99adfa63cb6d0aee06e3c2a42e44128c976872f283
+    home: https://karpenter.sh/
+    icon: https://repository-images.githubusercontent.com/278480393/dab059c8-caa1-4b55-aaa7-3d30e47a5616
+    keywords:
+    - cluster
+    - node
+    - scheduler
+    - autoscaling
+    - lifecycle
+    name: karpenter
+    sources:
+    - https://github.com/aws/karpenter/
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/karpenter-0.33.2/karpenter-0.33.2.tgz
+    version: 0.33.2
+  - apiVersion: v2
     appVersion: 0.32.2
     created: "2024-02-06T06:24:52.45687676Z"
     description: A Helm chart for Karpenter, an open-source node provisioning project
