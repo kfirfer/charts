@@ -67,6 +67,6 @@ spec:
           {{- end }}
     {{- if .Values.ui.nodeSelector }}
       nodeSelector:
-        {{- toYaml .Values.ui.nodeSelector | nindent 6 }}
+        {{- toYaml .Values.ui.nodeSelector | nindent 8 }}
     {{- end }}
 
