@@ -4,6 +4,10 @@ metadata:
   name: {{ include "allure.fullname" . }}-ui
   labels:
     {{- include "allure-ui.labels" . | nindent 4 }}
+{{- if .Values.deploymentAnnotations }}
+  annotations:
+{{ toYaml .Values.deploymentAnnotations | indent 4 }}
+{{- end }}
 spec:
   replicas: {{ .Values.ui.replicaCount }}
   selector:

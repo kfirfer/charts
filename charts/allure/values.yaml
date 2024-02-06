@@ -45,6 +45,8 @@ api:
     port: 80
   nodeSelector: {}
 
+deploymentAnnotations: {}
+
 # Keep Old Allure Results
 keepHistory: true
 
