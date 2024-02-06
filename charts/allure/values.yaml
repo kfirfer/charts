@@ -55,6 +55,12 @@ updateFrequency: NONE
 # Enables Admin & Viewer Login
 securityEnabled: false
 
+apiCredentials:
+  SECURITY_USER: "my_username"
+  SECURITY_PASS: "my_password"
+  SECURITY_VIEWER_USER: "my_password"
+  SECURITY_VIEWER_PASS: "view_pass"
+
 # Make Viewer Endpoints Public
 publicViewerEndpoint: true
 
