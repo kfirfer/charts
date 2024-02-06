@@ -3,6 +3,17 @@ entries:
   allure:
   - apiVersion: v2
     appVersion: 2.21.0
+    created: "2024-02-06T12:04:44.432942342Z"
+    description: A Helm chart for Allure Report
+    digest: 3dd39259323c22466f95de9270a2cd469d169b648d07d0229c46a6104d1c9d65
+    kubeVersion: '>= 1.19.0-0'
+    name: allure
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/allure-0.1.3/allure-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 2.21.0
     created: "2024-02-06T12:03:14.511597445Z"
     description: A Helm chart for Allure Report
     digest: df73ba90a89ff190b27fc56a16def64aae038ad5534d57de54c056b92aad9d7f
