@@ -4,7 +4,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "quickwit.fullname" $ }}-index-{{ .index_id }}
+  name: {{ include "quickwit.fullname" $ }}-index-{{ .index_id | replace "_" "-" }}
   labels:
     {{- include "quickwit.labels" $ | nindent 4 }}
   annotations:
