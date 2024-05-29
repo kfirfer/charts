@@ -45,6 +45,26 @@ entries:
     urls:
     - https://github.com/kfirfer/charts/releases/download/allure-0.1.1/allure-0.1.1.tgz
     version: 0.1.1
+  connect:
+  - apiVersion: v2
+    appVersion: 1.7.2
+    created: "2024-05-29T17:34:47.124804535Z"
+    description: A Helm chart for deploying 1Password Connect and the 1Password Connect
+      Kubernetes Operator
+    digest: 63313e228c4cf268411828f7aa37cd9f49ea3ce8151c460bf8f06ca0f2d225e0
+    home: https://1password.com/secrets/
+    icon: https://avatars.githubusercontent.com/u/38230737
+    keywords:
+    - 1Password
+    - 1Password Connect
+    - 1Password Operator
+    maintainers:
+    - email: support+business@1password.com
+      name: 1Password Secrets Integrations Team
+    name: connect
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/connect-1.15.0/connect-1.15.0.tgz
+    version: 1.15.0
   connector:
   - apiVersion: v1
     appVersion: latest
