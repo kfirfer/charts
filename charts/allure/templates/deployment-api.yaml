@@ -11,6 +11,11 @@ metadata:
 {{- end }}
 spec:
   replicas: {{ .Values.api.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+      maxSurge: 100%
   selector:
     matchLabels:
       {{- include "allure-api.selectorLabels" . | nindent 6 }}
