@@ -12,7 +12,7 @@ metadata:
 spec:
   replicas: {{ .Values.api.replicaCount }}
   strategy:
-    type: RollingUpdate
+    type: Recreate
     rollingUpdate:
       maxUnavailable: 100%
       maxSurge: 100%
