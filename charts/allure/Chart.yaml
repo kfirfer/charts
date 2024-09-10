@@ -4,4 +4,4 @@ description: A Helm chart for Allure Report
 kubeVersion: '>= 1.19.0-0'
 name: allure
 type: application
-version: 0.1.4
+version: 0.1.5

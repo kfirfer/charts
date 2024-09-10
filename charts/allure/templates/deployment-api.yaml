@@ -69,8 +69,8 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .Values.volume.existingClaim | default (printf "%s-data" $fullName) }}
           {{- end }}
-    {{- if .Values.ui.nodeSelector }}
+    {{- if .Values.api.nodeSelector }}
       nodeSelector:
-        {{- toYaml .Values.ui.nodeSelector | nindent 8 }}
+        {{- toYaml .Values.api.nodeSelector | nindent 8 }}
     {{- end }}
 
