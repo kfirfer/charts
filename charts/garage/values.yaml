@@ -168,8 +168,10 @@ service:
   s3:
     api:
       port: 3900
+      nodePort:
     web:
       port: 3902
+      nodePort:
     # NOTE: the admin API is excluded for now as it is not consistent across nodes
 
 ingress:
