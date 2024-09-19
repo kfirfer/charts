@@ -18,6 +18,9 @@ redis:
 
   #port: 6379
 
+  # Specifies redis username
+  #username: "Something"
+
   # Specifies redis password
   #password: "Something"
 
