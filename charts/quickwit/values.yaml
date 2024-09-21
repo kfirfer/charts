@@ -6,7 +6,7 @@ image:
   repository: quickwit/quickwit
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  # tag: v0.6.1
+  # tag: v0.8.1
 
 imagePullSecrets: []
 nameOverride: ""
@@ -25,6 +25,8 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+annotations: {}
+
 podAnnotations: {}
 
 podSecurityContext:
@@ -37,6 +39,15 @@ securityContext:
 # Additional global env
 environment: {}
   # KEY: VALUE
+environmentFrom: []
+  # - secretRef:
+  #     name: quickwit
+  # - configMapRef:
+  #     name: quickwit
+
+configMaps: []
+  # - name: configmap1
+  #   mountPath: /quickwit/configmaps/
 
 searcher:
   replicaCount: 3
@@ -44,6 +55,17 @@ searcher:
   # Extra env for searcher
   extraEnv: {}
     # KEY: VALUE
+  extraEnvFrom: []
+    # - secretRef:
+    #     name: quickwit-searcher
+    # - configMapRef:
+    #     name: quickwit-searcher
+
+  # extraVolumes -- Additional volumes to use with Pods.
+  extraVolumes: []
+
+  # extraVolumeMounts -- Additional volumes to mount into Quickwit containers.
+  extraVolumeMounts: []
 
   resources: {}
     # limits:
@@ -92,6 +114,20 @@ searcher:
       path: /health/readyz
       port: rest
 
+  # Override args for starting container
+  args: []
+
+  # initContainers -- Init containers to be added to the pods
+  initContainers: []
+
+  annotations: {}
+
+  podAnnotations: {}
+
+  serviceAnnotations: {}
+
+  # serviceType: ClusterIP
+
   nodeSelector: {}
 
   tolerations: []
@@ -104,6 +140,17 @@ indexer:
   # Extra env for indexer
   extraEnv: {}
     # KEY: VALUE
+  extraEnvFrom: []
+    # - secretRef:
+    #     name: quickwit-indexer
+    # - configMapRef:
+    #     name: quickwit-indexer
+
+  # extraVolumes -- Additional volumes to use with Pods.
+  extraVolumes: []
+
+  # extraVolumeMounts -- Additional volumes to mount into Quickwit containers.
+  extraVolumeMounts: []
 
   resources: {}
     # limits:
@@ -120,8 +167,6 @@ indexer:
 
   updateStrategy: {}
     # type: RollingUpdate
-
-  terminationGracePeriodSeconds: 10
 
   lifecycle: {}
   #  preStop:
@@ -145,11 +190,29 @@ indexer:
       path: /health/readyz
       port: rest
 
+  # Override args for starting container
+  args: []
+
+  # initContainers -- Init containers to be added to the pods
+  initContainers: []
+
+  annotations: {}
+
+  podAnnotations: {}
+
+  serviceAnnotations: {}
+
+  # serviceType: ClusterIP
+
   nodeSelector: {}
 
   tolerations: []
 
   affinity: {}
+
+  # Long grace period is recommended to wait for all index commit_timeout_secs and splits to be published
+  # See https://quickwit.io/docs/configuration/index-config#indexing-settings
+  terminationGracePeriodSeconds: 120
 
   persistentVolume:
     enabled: false
@@ -164,6 +227,18 @@ metastore:
   # Extra env for metastore
   extraEnv: {}
     # KEY: VALUE
+  # This is the recommended way to inject `QW_METASTORE_URI` when using the postgres metastore (see https://quickwit.io/docs/configuration/metastore-config)
+  extraEnvFrom: []
+    # - secretRef:
+    #     name: quickwit-metastore
+    # - configMapRef:
+    #     name: quickwit-metastore
+
+  # extraVolumes -- Additional volumes to use with Pods.
+  extraVolumes: []
+
+  # extraVolumeMounts -- Additional volumes to mount into Quickwit containers.
+  extraVolumeMounts: []
 
   resources: {}
     # limits:
@@ -172,11 +247,6 @@ metastore:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
-
-  ## Pod distruption budget
-  podDisruptionBudget: {}
-    # maxUnavailable: 1
-    # minAvailable: 2
 
   updateStrategy: {}
     # type: RollingUpdate
@@ -204,6 +274,20 @@ metastore:
     httpGet:
       path: /health/readyz
       port: rest
+
+  # Override args for starting container
+  args: []
+
+  # initContainers -- Init containers to be added to the pods
+  initContainers: []
+
+  annotations: {}
+
+  podAnnotations: {}
+
+  serviceAnnotations: {}
+
+  # serviceType: ClusterIP
 
   nodeSelector: {}
 
@@ -212,11 +296,22 @@ metastore:
   affinity: {}
 
 control_plane:
-  replicaCount: 1
-
+  updateStrategy:
+    type: Recreate
   # Extra env for control plane
   extraEnv: {}
     # KEY: VALUE
+  extraEnvFrom: []
+    # - secretRef:
+    #     name: quickwit-control-plane
+    # - configMapRef:
+    #     name: quickwit-control-plane
+
+  # extraVolumes -- Additional volumes to use with Pods.
+  extraVolumes: []
+
+  # extraVolumeMounts -- Additional volumes to mount into Quickwit containers.
+  extraVolumeMounts: []
 
   resources: {}
     # limits:
@@ -225,14 +320,6 @@ control_plane:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
-
-  ## Pod distruption budget
-  podDisruptionBudget: {}
-    # maxUnavailable: 1
-    # minAvailable: 2
-
-  updateStrategy: {}
-    # type: RollingUpdate
 
   terminationGracePeriodSeconds: 10
 
@@ -257,6 +344,20 @@ control_plane:
     httpGet:
       path: /health/readyz
       port: rest
+
+  # Override args for starting container
+  args: []
+
+  # initContainers -- Init containers to be added to the pods
+  initContainers: []
+
+  annotations: {}
+
+  podAnnotations: {}
+
+  serviceAnnotations: {}
+
+  # serviceType: ClusterIP
 
   nodeSelector: {}
 
@@ -268,9 +369,20 @@ janitor:
   # Enable Janitor service
   enabled: true
 
-  # Extra env for searcher
+  # Extra env for janitor
   extraEnv: {}
     # KEY: VALUE
+  extraEnvFrom: []
+    # - secretRef:
+    #     name: quickwit-janitor
+    # - configMapRef:
+    #     name: quickwit-janitor
+
+  # extraVolumes -- Additional volumes to use with Pods.
+  extraVolumes: []
+
+  # extraVolumeMounts -- Additional volumes to mount into Quickwit containers.
+  extraVolumeMounts: []
 
   resources: {}
     # limits:
@@ -279,14 +391,6 @@ janitor:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
-
-  ## Pod distruption budget
-  podDisruptionBudget: {}
-    # maxUnavailable: 1
-    # minAvailable: 2
-
-  updateStrategy: {}
-    # type: RollingUpdate
 
   terminationGracePeriodSeconds: 10
 
@@ -312,6 +416,20 @@ janitor:
       path: /health/readyz
       port: rest
 
+  # Override args for starting container
+  args: []
+
+  # initContainers -- Init containers to be added to the pods
+  initContainers: []
+
+  annotations: {}
+
+  podAnnotations: {}
+
+  serviceAnnotations: {}
+
+  # serviceType: ClusterIP
+
   nodeSelector: {}
 
   tolerations: []
@@ -320,12 +438,17 @@ janitor:
 
 # Deploy jobs to bootstrap creation of indexes and sources for quickwit clusters
 bootstrap:
-  # Enable boostrap jobs
+  # Enable bootstrap jobs
   enabled: false
 
-  # Extra env for boostrap jobs
+  # Extra env for bootstrap jobs
   extraEnv: {}
     # KEY: VALUE
+  extraEnvFrom: []
+    # - secretRef:
+    #     name: quickwit-bootstrap
+    # - configMapRef:
+    #     name: quickwit-bootstrap
 
   resources: {}
     # limits:
@@ -341,28 +464,57 @@ bootstrap:
 
   affinity: {}
 
+  sources:
+    # Override command for starting container
+    command: []
+
+    # initContainers -- Init containers to be executed before the source creation.
+    initContainers: []
+
+    # extraVolumes -- Additional volumes to use with bootstrap Pods.
+    extraVolumes: []
+
+    # extraVolumeMounts -- Additional volumes to mount into bootstrap containers (not the init containers).
+    extraVolumeMounts: []
+
+  indexes:
+    # initContainers -- Init containers to be executed before the index creation.
+    initContainers: []
+
+    # extraVolumes -- Additional volumes to use with bootstrap Pods.
+    extraVolumes: []
+
+    # extraVolumeMounts -- Additional volumes to mount into bootstrap containers (not the init containers).
+    extraVolumeMounts: []
 
 # Quickwit configuration
+# Warning: This config is writed directly into a configMap
+# to avoid passing sensitive value you can pass environment variables.
+# https://quickwit.io/docs/configuration/node-config#using-environment-variables-in-the-configuration
+configLocation: /quickwit/node.yaml
+
 config:
-  # Metastore configuration.
-  postgres: {}
-  #   host: ""
-  #   port: 5432
-  #   database: metastore
-  #   username: quickwit
-  #   password: ""
-
-  s3: {}
-    # endpoint: "https://s3.eu-west-1.amazonaws.com"
-    # region: eu-west-1
-    # access_key: "my-access-key"
-    # secret_key: "my-secret-key"
-
-  azure_blob: {}
-    # account_name: "my-azure-blob-accout"
-    # access_key: "my-azure-blob-access-key"
-
+  version: 0.8
+  listen_address: 0.0.0.0
+  gossip_listen_port: 7282
+  data_dir: /quickwit/qwdata
   default_index_root_uri: s3://quickwit/indexes
+
+  # postgres:
+  #   max_num_connections: 50
+
+  # storage:
+    # s3:
+      # endpoint: "http://custom-s3-endpoint"
+      # region: eu-east-1
+      # We recommend using IAM roles and permissions to access Amazon S3 resources,
+      # but you can specify a pair of access and secret keys if necessary.
+      # access_key_id: <my access key>
+      # secret_access_key: ${AWS_ACCESS_KEY_ID}
+    # azure:
+      # account: "<my account name>"
+      # access_key: ${QW_AZURE_STORAGE_ACCESS_KEY}
+
   # Indexer settings
   # indexer:
   #   split_store_max_num_bytes: 200G
@@ -377,8 +529,10 @@ config:
   #   split_footer_cache_capacity: 1G
   #   max_num_concurrent_split_streams: 100
 
+# Seed configuration
+seed:
   indexes: []
-    # - version: 0.5
+    # - version: 0.8
     #   index_id: my-index
     #   doc_mapping:
     #     field_mappings:
@@ -403,7 +557,7 @@ config:
   sources: []
     # - index: my-index
     #   source:
-    #     version: 0.5
+    #     version: 0.8
     #     source_id: my-source
     #     source_type: kafka
     #     num_pipelines: 1
@@ -434,6 +588,8 @@ serviceMonitor:
 # Prometheus Operator alertmanager alerts
 prometheusRule:
   enabled: false
+  # -- Additional labels to add to PrometheusRule resources
+  additionalLabels: {}
   rules: []
   #  - alert: Example
   #    expr: metric == 1
@@ -442,7 +598,15 @@ prometheusRule:
   #      severity: warning
 
 service:
+  # Service type configuration default for all Quickwit services
   type: ClusterIP
+
+  # -- Set the ip family policy to configure dual-stack see [Configure dual-stack](https://kubernetes.io/docs/concepts/services-networking/dual-stack/#services)
+  ipFamilyPolicy: ""
+  # -- Sets the families that should be supported and the order in which they should be applied to ClusterIP as well. Can be IPv4 and/or IPv6.
+  ipFamilies: []
+
+  annotations: {}
 
 ingress:
   enabled: false

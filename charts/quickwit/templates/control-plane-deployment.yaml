@@ -4,6 +4,13 @@ metadata:
   name: {{ include "quickwit.fullname" . }}-control-plane
   labels:
     {{- include "quickwit.labels" . | nindent 4 }}  
+  annotations:
+    {{- with .Values.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    {{- with .Values.control_plane.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   replicas: 1
   selector:
@@ -18,7 +25,11 @@ spec:
       {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- with .Values.control_plane.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
+        {{- include "quickwit.additionalLabels" . | nindent 8 }}
         {{- include "quickwit.control_plane.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -31,19 +42,36 @@ spec:
       {{- if .Values.control_plane.terminationGracePeriodSeconds }}
       terminationGracePeriodSeconds: {{ .Values.control_plane.terminationGracePeriodSeconds }}
       {{- end }}
+      {{- with .Values.control_plane.initContainers }}
+      initContainers:
+        {{- toYaml . | nindent 8 }}
+      {{ end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if $.Values.control_plane.args }}
+          args: {{- toYaml $.Values.control_plane.args | nindent 10 }}
+          {{- else }}
           args: ["run", "--service", "control_plane"]
+          {{- end }}
           env:
             {{- include "quickwit.environment" . | nindent 12 }}
             {{- range $key, $value := .Values.control_plane.extraEnv }}
             - name: "{{ $key }}"
               value: "{{ $value }}"
             {{- end }}
+          {{- if or (.Values.environmentFrom) (.Values.control_plane.extraEnvFrom) }}
+          envFrom:
+          {{- with .Values.environmentFrom }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.control_plane.extraEnvFrom }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- end }}
           ports:
             {{- include "quickwit.ports" . | nindent 12 }}
           startupProbe:
@@ -62,6 +90,13 @@ spec:
               subPath: node.yaml
             - name: data
               mountPath: /quickwit/qwdata
+            {{- range .Values.configMaps }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+            {{- end }}
+            {{- with .Values.indexer.extraVolumeMounts }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
           resources:
             {{- toYaml .Values.control_plane.resources | nindent 14 }}
       volumes:
@@ -73,6 +108,14 @@ spec:
                 path: node.yaml
         - name: data
           emptyDir: {}
+        {{- range .Values.configMaps }}
+        - name: {{ .name }}
+          configMap:
+            name: {{ .name }}
+        {{- end }}
+        {{- with .Values.indexer.extraVolumes }}
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
       {{- with .Values.control_plane.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -85,4 +128,3 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-

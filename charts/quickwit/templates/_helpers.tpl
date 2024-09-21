@@ -31,6 +31,15 @@ Create chart name and version as used by the chart label.
 {{- end }}
 
 {{/*
+Custom labels
+*/}}
+{{- define "quickwit.additionalLabels" -}}
+{{- if .Values.additionalLabels }}
+{{ toYaml .Values.additionalLabels }}
+{{- end }}
+{{- end }}
+
+{{/*
 Common labels
 */}}
 {{- define "quickwit.labels" -}}
@@ -40,9 +49,7 @@ helm.sh/chart: {{ include "quickwit.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- if .Values.additionalLabels }}
-{{ toYaml .Values.additionalLabels }}
-{{- end }}
+{{- include "quickwit.additionalLabels" . }}
 {{- end }}
 
 {{/*
@@ -54,7 +61,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Search Selector labels
+Searcher Selector labels
 */}}
 {{- define "quickwit.searcher.selectorLabels" -}}
 {{ include "quickwit.selectorLabels" . }}
@@ -137,67 +144,19 @@ Quickwit environment
     fieldRef:
       fieldPath: status.podIP
 - name: QW_CONFIG
-  value: node.yaml
+  value: {{ .Values.configLocation }}
 - name: QW_CLUSTER_ID
   value: {{ .Release.Namespace }}-{{ include "quickwit.fullname" . }}
-{{- if ((.Values.config.storage).s3).access_key_id }}
-- name: AWS_ACCESS_KEY_ID
-  value: {{ .Values.config.storage.s3.access_key_id }}
-{{- end }}
-{{- if ((.Values.config.storage).s3).secret_access_key }}
-- name: AWS_SECRET_ACCESS_KEY
-  valueFrom:
-    secretKeyRef:
-      name: {{ include "quickwit.fullname" $ }}
-      key: storage.s3.secret_access_key
-{{- end }}
-{{- if ((.Values.config.storage).azure).account }}
-- name: QW_AZURE_STORAGE_ACCOUNT
-  value: {{ .Values.config.storage.azure.account }}
-{{- end }}
-{{- if ((.Values.config.storage).azure).access_key }}
-- name: QW_AZURE_STORAGE_ACCESS_KEY
-  valueFrom:
-    secretKeyRef:
-      name: {{ include "quickwit.fullname" $ }}
-      key: storage.azure.access_key
-{{- end }}
 - name: QW_NODE_ID
   value: "$(POD_NAME)"
 - name: QW_PEER_SEEDS
   value: {{ include "quickwit.fullname" . }}-headless
 - name: QW_ADVERTISE_ADDRESS
   value: "$(POD_IP)"
+- name: QW_CLUSTER_ENDPOINT
+  value: http://{{ include "quickwit.fullname" $ }}-metastore.{{ $.Release.Namespace }}.svc.cluster.local:7280
 {{- range $key, $value := .Values.environment }}
 - name: "{{ $key }}"
   value: "{{ $value }}"
 {{- end }}
 {{- end }}
-
-{{/*
-Quickwit metastore environment
-*/}}
-{{- define "quickwit.metastore.environment" -}}
-{{ include "quickwit.environment" . }}
-{{- if .Values.config.metastore_uri }}
-- name: QW_METASTORE_URI
-  value: {{ .Values.config.metastore_uri }}
-{{- else if .Values.config.postgres }}
-- name: POSTGRES_HOST
-  value: {{ required "A valid config.postgres.host is required!" .Values.config.postgres.host }}
-- name: POSTGRES_PORT
-  value: {{ .Values.config.postgres.port | default 5432 | quote }}
-- name: POSTGRES_DATABASE
-  value: {{ .Values.config.postgres.database | default "metastore" }}
-- name: POSTGRES_USERNAME
-  value: {{ .Values.config.postgres.username | default "quickwit" }}
-- name: POSTGRES_PASSWORD
-  valueFrom:
-    secretKeyRef:
-      name: {{ include "quickwit.fullname" . }}
-      key: postgres.password
-- name: QW_METASTORE_URI
-  value: "postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@$(POSTGRES_HOST):$(POSTGRES_PORT)/$(POSTGRES_DATABASE)"      
-{{- end }}
-{{- end }}
-
