@@ -36,6 +36,9 @@ spec:
         {{- include "quickwit.additionalLabels" . | nindent 8 }}
         {{- include "quickwit.indexer.selectorLabels" . | nindent 8 }}
     spec:
+      {{- if .Values.indexer.priorityClassName }}
+      priorityClassName: "{{ .Values.indexer.priorityClassName }}"
+      {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}

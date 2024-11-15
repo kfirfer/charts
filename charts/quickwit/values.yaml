@@ -134,6 +134,8 @@ searcher:
 
   affinity: {}
 
+  priorityClassName: ""
+
 indexer:
   replicaCount: 1
 
@@ -221,6 +223,8 @@ indexer:
     ## Annotations for the PVC
     annotations: {}
 
+  priorityClassName: ""
+
 metastore:
   replicaCount: 1
 
@@ -295,6 +299,8 @@ metastore:
 
   affinity: {}
 
+  priorityClassName: ""
+
 control_plane:
   updateStrategy:
     type: Recreate
@@ -364,6 +370,8 @@ control_plane:
   tolerations: []
 
   affinity: {}
+
+  priorityClassName: ""
 
 janitor:
   # Enable Janitor service
@@ -435,6 +443,8 @@ janitor:
   tolerations: []
 
   affinity: {}
+
+  priorityClassName: ""
 
 # Deploy jobs to bootstrap creation of indexes and sources for quickwit clusters
 bootstrap:
