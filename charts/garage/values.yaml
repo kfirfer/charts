@@ -159,6 +159,8 @@ securityContext:
       - ALL
   readOnlyRootFilesystem: true
 
+priorityClassName: ""
+
 service:
   # You can rely on any service to expose your cluster
   # - ClusterIP (+ Ingress)
