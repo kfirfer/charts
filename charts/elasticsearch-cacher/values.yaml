@@ -118,7 +118,7 @@ metrics:
       #     summary: App pod {{ "{{ $labels.pod }}" }} is down
 
 livenessProbe:
-  enabled: true
+  enabled: false
   initialDelaySeconds: 60
   periodSeconds: 7
   timeoutSeconds: 5
@@ -129,7 +129,7 @@ livenessProbe:
     port: 8080
 
 readinessProbe:
-  enabled: true
+  enabled: false
   initialDelaySeconds: 20
   periodSeconds: 3
   timeoutSeconds: 2
@@ -140,7 +140,7 @@ readinessProbe:
     port: 8080
 
 startupProbe:
-  enabled: true
+  enabled: false
   initialDelaySeconds: 20
   periodSeconds: 5
   timeoutSeconds: 3
