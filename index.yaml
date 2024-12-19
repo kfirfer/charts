@@ -225,6 +225,23 @@ entries:
     urls:
     - https://github.com/kfirfer/charts/releases/download/elasticsearch-8.6.3/elasticsearch-8.6.3.tgz
     version: 8.6.3
+  elasticsearch-cacher:
+  - annotations:
+      category: ApplicationServer
+    apiVersion: v2
+    appVersion: latest
+    created: "2024-12-19T15:37:11.317682037Z"
+    description: A Helm chart for Kubernetes
+    digest: a05da741da016481c8f5291db97bba334577870102b7686034eddc2b1b110105
+    icon: https://1.bp.blogspot.com/-SS2TiFZPpIQ/UUdSeFkTAPI/AAAAAAAAAlE/Q9oqGZCLm7U/s1600/Java7.png
+    maintainers:
+    - email: kfirfer@gmail.com
+      name: kfir.fersht
+    name: elasticsearch-cacher
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/elasticsearch-cacher-0.0.1/elasticsearch-cacher-0.0.1.tgz
+    version: 0.0.1
   elasticsearch-curator:
   - apiVersion: v2
     appVersion: 5.8.4
