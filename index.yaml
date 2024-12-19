@@ -230,6 +230,22 @@ entries:
       category: ApplicationServer
     apiVersion: v2
     appVersion: latest
+    created: "2024-12-19T15:42:13.703829538Z"
+    description: A Helm chart for Kubernetes
+    digest: ac404e93a5d90ff52dc8630e38ff984bbcfe63377bf5346fc360347448c8aca3
+    icon: https://1.bp.blogspot.com/-SS2TiFZPpIQ/UUdSeFkTAPI/AAAAAAAAAlE/Q9oqGZCLm7U/s1600/Java7.png
+    maintainers:
+    - email: kfirfer@gmail.com
+      name: kfir.fersht
+    name: elasticsearch-cacher
+    type: application
+    urls:
+    - https://github.com/kfirfer/charts/releases/download/elasticsearch-cacher-0.0.2/elasticsearch-cacher-0.0.2.tgz
+    version: 0.0.2
+  - annotations:
+      category: ApplicationServer
+    apiVersion: v2
+    appVersion: latest
     created: "2024-12-19T15:37:11.317682037Z"
     description: A Helm chart for Kubernetes
     digest: a05da741da016481c8f5291db97bba334577870102b7686034eddc2b1b110105
